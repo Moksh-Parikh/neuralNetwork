@@ -1,15 +1,8 @@
 #include "headers/matrixMaths.h"
 
 int main() {
-    matrix matrix1;
-    matrix1.values = malloc(4 * sizeof(int));
-    matrix1.rows = 2;
-    matrix1.columns = 2;
-    
-    matrix matrix2;
-    matrix2.values = malloc(4 * sizeof(int));
-    matrix2.rows = 2;
-    matrix2.columns = 2;
+    INIT_MATRIX(matrix1, 2, 2)
+    INIT_MATRIX(matrix2, 2, 2)
 
     matrix matrix3;
     
@@ -27,7 +20,7 @@ int main() {
     printf("\n");
 
     multiplyMatrices(matrix1, matrix2, &matrix3);
-    // printMatrix(matrix3);
+    printMatrix(matrix3);
     
     DESTROY_MATRIX(matrix1);
     DESTROY_MATRIX(matrix2);
