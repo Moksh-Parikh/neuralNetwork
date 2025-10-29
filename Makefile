@@ -3,7 +3,7 @@ CFLAGS = -g
 TARGET = main
 SOURCES = $(wildcard *.c)
 OBJECTS = $(SOURCES:.c=.o)
-DEPS=matrixMaths.h
+DEPS=$(wildcard *.h)
 
 %.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<;

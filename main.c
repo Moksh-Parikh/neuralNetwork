@@ -1,4 +1,4 @@
-#include "headers/matrixMaths.h"
+#include "headers/neuronFunctions.h"
 
 int main() {
     INIT_MATRIX(matrix1, 2, 2)
@@ -13,19 +13,36 @@ int main() {
         }
     }
 
-    printMatrix(matrix1);
-    printf("\n");
+    // printMatrix(matrix1);
+    // printf("\n");
 
-    printMatrix(matrix2);
-    printf("\n");
+    // printMatrix(matrix2);
+    // printf("\n");
 
     multiplyMatrices(matrix1, matrix2, &matrix3);
-    printMatrix(matrix3);
+    // printMatrix(matrix3);
     
     DESTROY_MATRIX(matrix1);
     DESTROY_MATRIX(matrix2);
     DESTROY_MATRIX(matrix3);
 
-    // printf("hi\n");
+    float* biasArray = malloc(20 * sizeof(float));
+    for (int i = 0; i < 20; i++) {
+        biasArray[i] = (float)i / 43.7f;
+    }
+
+    neuron* inputLayer = initialiseNeuronLayer(10, INPUT_NEURON, NULL);
+    neuron* hiddenLayer = initialiseNeuronLayer(20, HIDDEN_NEURON, biasArray);
+
+    for (int i = 0; i < 20; i++) {
+        printf("%f\n", hiddenLayer[i].bias);
+    }
+
+    createWeightMatrix(10, 20, &matrix3);
+
+    printMatrix(matrix3);
+
+    DESTROY_MATRIX(matrix3);
+
     return 0;
 }

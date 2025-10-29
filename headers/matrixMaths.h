@@ -1,3 +1,6 @@
+#ifndef MATRIX_MATHS
+#define MATRIX_MATHS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -9,11 +12,11 @@
 #define INIT_MATRIX(newMatrix, mRows, mColumns) matrix (newMatrix); \
             (newMatrix).rows = (mRows); \
             (newMatrix).columns = (mColumns); \
-            (newMatrix).values = malloc((mRows) * (mColumns) * sizeof(int32_t));
+            (newMatrix).values = malloc((mRows) * (mColumns) * sizeof(float));
 
 #define INIT_MATRIX_FROM_POINTER(newMatrix, newRows, newColumns) (newMatrix)->rows = (newRows); \
             (newMatrix)->columns = (newColumns); \
-            (newMatrix)->values = malloc((newRows) * (newColumns) * sizeof(int32_t));
+            (newMatrix)->values = malloc((newRows) * (newColumns) * sizeof(float));
 
 #define DESTROY_VECTOR(oldVector) free((oldVector).values); \
                         (oldVector).values = NULL; \
@@ -25,12 +28,12 @@
                         (oldMatrix).columns = 0;
 
 typedef struct {
-    int32_t* values;
+    float* values;
     int32_t size;
 } vector;
 
 typedef struct {
-    int32_t* values;
+    float* values;
     int32_t rows;
     int32_t columns;
 } matrix;
@@ -41,8 +44,10 @@ typedef enum {
 } matrixMultiplicationErrorTypes;
 
 void printVector(vector vectorA);
-void changeMatrixValue(matrix* input, int32_t row, int32_t column, int32_t value);
-int32_t readMatrixValue(matrix input, int32_t row, int32_t column);
+void changeMatrixValue(matrix* input, int32_t row, int32_t column, float value);
+float readMatrixValue(matrix input, int32_t row, int32_t column);
 void printMatrix(matrix input);
-int32_t dotProduct(vector vectorA, vector vectorB);
+float dotProduct(vector vectorA, vector vectorB);
 matrixMultiplicationErrorTypes multiplyMatrices(matrix matrixA, matrix matrixB, matrix* outMatrix);
+
+#endif

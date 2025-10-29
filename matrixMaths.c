@@ -2,7 +2,7 @@
 
 void printVector(vector vectorA) {
     for (int32_t i = 0; i < vectorA.size; i++) {
-        printf("%d", vectorA.values[i]);
+        printf("%f", vectorA.values[i]);
         if (i == vectorA.size - 1) {
             printf("\n");
         }
@@ -13,11 +13,11 @@ void printVector(vector vectorA) {
 
 }
 
-void changeMatrixValue(matrix* input, int32_t row, int32_t column, int32_t value) {
+void changeMatrixValue(matrix* input, int32_t row, int32_t column, float value) {
     input->values[row * input->columns + column] = value;
 }
 
-int32_t readMatrixValue(matrix input, int32_t row, int32_t column) {
+float readMatrixValue(matrix input, int32_t row, int32_t column) {
     if (input.rows < row || input.columns < column) {
         printf("Out of bounds access in %s\n\tInput matrix is %d x %d, tried to access %d, %d", __func__, input.rows, input.columns, row, column);
         return 0;
@@ -28,7 +28,7 @@ int32_t readMatrixValue(matrix input, int32_t row, int32_t column) {
 void printMatrix(matrix input) {
     for (int32_t x = 0; x < input.rows; x++) {
         for (int32_t y = 0; y < input.columns; y++) {
-            printf("%d", readMatrixValue(input, x, y));
+            printf("%f", readMatrixValue(input, x, y));
 
             if (y == input.columns - 1) {
                 printf("\n");
@@ -40,13 +40,13 @@ void printMatrix(matrix input) {
     }
 }
 
-int32_t dotProduct(vector vectorA, vector vectorB) {
+float dotProduct(vector vectorA, vector vectorB) {
     if (vectorA.size != vectorB.size) {
         printf("Vectors not of the same size!");
         return 0;
     }
 
-    int32_t dotProductResult = 0;
+    float dotProductResult = 0.0f;
 
     for(int32_t i = 0; i < vectorA.size; i++) {
         dotProductResult += vectorA.values[i] * vectorB.values[i];
