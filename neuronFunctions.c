@@ -14,7 +14,7 @@ neuron* initialiseNeuronLayer(uint8_t numberOfNeurons, neuronType type, float* b
     return newLayer;
 }
 
-int createWeightMatrix(uint8_t numberOfInputNeurons, uint8_t numberOfOutputNeurons, matrix* outMatrix) {
+int createRandomWeightMatrix(uint8_t numberOfInputNeurons, uint8_t numberOfOutputNeurons, matrix* outMatrix) {
     if (outMatrix == NULL) {
         printf("outMatrix is NULL in %s, %s:%d\n", __func__, __FILE__, __LINE__);
         return 1;

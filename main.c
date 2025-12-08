@@ -38,11 +38,28 @@ int main() {
         printf("%f\n", hiddenLayer[i].bias);
     }
 
-    createWeightMatrix(10, 20, &matrix3);
+    createRandomWeightMatrix(10, 20, &matrix3);
 
     printMatrix(matrix3);
 
     DESTROY_MATRIX(matrix3);
+
+    INIT_MATRIX(transposeMePLZ, 3, 3)
+
+    transposeMePLZ.values[0] = 1;
+    transposeMePLZ.values[1] = 0;
+    transposeMePLZ.values[2] = 1;
+    transposeMePLZ.values[3] = 0;
+    transposeMePLZ.values[4] = 1;
+    transposeMePLZ.values[5] = 1;
+    transposeMePLZ.values[6] = 0;
+    transposeMePLZ.values[7] = 0;
+    transposeMePLZ.values[8] = 1;
+
+    printMatrix(transposeMePLZ);
+    printf("\n");
+
+    transposeMatrix(&transposeMePLZ);
 
     return 0;
 }

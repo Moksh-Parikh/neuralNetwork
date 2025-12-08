@@ -49,5 +49,6 @@ float readMatrixValue(matrix input, int32_t row, int32_t column);
 void printMatrix(matrix input);
 float dotProduct(vector vectorA, vector vectorB);
 matrixMultiplicationErrorTypes multiplyMatrices(matrix matrixA, matrix matrixB, matrix* outMatrix);
+int transposeMatrix(matrix* inMatrix);
 
 #endif

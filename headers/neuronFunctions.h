@@ -22,6 +22,6 @@ typedef struct neuron {
 } neuron;
 
 neuron* initialiseNeuronLayer(uint8_t numberOfNeurons, neuronType type, float* biasArray);
-int createWeightMatrix(uint8_t numberOfInputNeurons, uint8_t numberOfOutputNeurons, matrix* outMatrix);
+int createRandomWeightMatrix(uint8_t numberOfInputNeurons, uint8_t numberOfOutputNeurons, matrix* outMatrix);
 
 #endif

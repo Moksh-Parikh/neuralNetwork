@@ -96,3 +96,23 @@ matrixMultiplicationErrorTypes multiplyMatrices(matrix matrixA, matrix matrixB, 
     // so we don't need to free it
     DESTROY_VECTOR(vector2);
 }
+
+int transposeMatrix(matrix* inMatrix) {
+    int oldRows = inMatrix->rows;
+    int oldColumns = inMatrix->columns;
+
+    matrix tempMatrix;
+
+    INIT_MATRIX_FROM_POINTER(&tempMatrix, oldColumns, oldRows)
+
+    for(int x = 0; x < oldRows; x++) {
+        for(int y = 0; y < oldColumns; y++) {
+            changeMatrixValue(&tempMatrix, y, x, readMatrixValue(*inMatrix, x, y) );
+        }
+    }
+
+    printMatrix(tempMatrix);
+
+    inMatrix->rows = oldColumns;
+    inMatrix->columns = oldRows;
+}
