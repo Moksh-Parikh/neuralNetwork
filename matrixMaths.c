@@ -101,9 +101,12 @@ int transposeMatrix(matrix* inMatrix) {
     int oldRows = inMatrix->rows;
     int oldColumns = inMatrix->columns;
 
-    matrix tempMatrix;
+    INIT_MATRIX(tempMatrix, oldColumns, oldRows)
 
-    INIT_MATRIX_FROM_POINTER(&tempMatrix, oldColumns, oldRows)
+    if (tempMatrix->values == NULL) {
+        printf("malloc error in %s, %s:%d\n", __func__, __FILE__, __LINE__);
+        return 1;
+    }
 
     for(int x = 0; x < oldRows; x++) {
         for(int y = 0; y < oldColumns; y++) {
@@ -111,8 +114,12 @@ int transposeMatrix(matrix* inMatrix) {
         }
     }
 
-    printMatrix(tempMatrix);
-
     inMatrix->rows = oldColumns;
     inMatrix->columns = oldRows;
+
+
+    free(inMatrix->values);
+    inMatrix->values = tempMatrix.values;
+
+    return 0;
 }

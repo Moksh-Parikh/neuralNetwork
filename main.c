@@ -13,14 +13,7 @@ int main() {
         }
     }
 
-    // printMatrix(matrix1);
-    // printf("\n");
-
-    // printMatrix(matrix2);
-    // printf("\n");
-
     multiplyMatrices(matrix1, matrix2, &matrix3);
-    // printMatrix(matrix3);
     
     DESTROY_MATRIX(matrix1);
     DESTROY_MATRIX(matrix2);
@@ -37,6 +30,10 @@ int main() {
     for (int i = 0; i < 20; i++) {
         printf("%f\n", hiddenLayer[i].bias);
     }
+
+    free(biasArray);
+    free(inputLayer);
+    free(hiddenLayer);
 
     createRandomWeightMatrix(10, 20, &matrix3);
 
@@ -60,6 +57,9 @@ int main() {
     printf("\n");
 
     transposeMatrix(&transposeMePLZ);
+    printMatrix(transposeMePLZ);
+    printf("\n");
+    DESTROY_MATRIX(transposeMePLZ);
 
     return 0;
 }
